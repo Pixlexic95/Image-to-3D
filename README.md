@@ -1,8 +1,8 @@
 # Real Image-to-3D Mesh Generation
 This portfolio demonstrates how real unprocessed image data from an underwater marine environment was segmented and then generated into a 3D mesh using MeshyAI. Producing an accessible, low cost pipeline for high fidelity VR simulations.
 
-<img src="Plastic_Toy_4.png" alt="3D Generated Mesh of Scuba Diver Toy" width="48%">
-<img src="Blue_Box_7.png" alt="3D Mesh of Blue Box" width="48%">
+<img src="images/Plastic_Toy_4.png" alt="3D Generated Mesh of Scuba Diver Toy" width="48%">
+<img src="images/Blue_Box_7.png" alt="3D Mesh of Blue Box" width="48%">
 
 ## Key Outputs
 1. Amph3D Dataset
@@ -87,23 +87,23 @@ More detail on the experimental side is pending a publication.<br>
 #### Part 1: Segmentation using SAM (Kirillov, 2023)
   - **Step 1**: Take a random selection of images and segment them with SAM. Save as .png files to maintain a transparent background.
   - **Step 2**: Discard any images that have artificial boundaries (ie. cut off from the edge or overlapped).
-    <img src="000002_01.png" alt="Incomplete Segment of Starfish" width="40%"> 
+    <img src="images/000002_01.png" alt="Incomplete Segment of Starfish" width="40%"> 
 
 #### Part 2: 3D Generation using Meshy
   - **Step 1**: Import the .png file into Meshy.AI. Ensure mesh is watertight and hallucination hasn't occurred.
     - Either repeat Step 1 using the 're-generate' option until the mesh is correct OR the object is too complex and needs to EITHER be disregarded OR re-segmented.
     
-    <img src="Screenshot 2025-11-13 024155.png" alt="3D Generated Mesh of a Pot" width="48%">
+    <img src="images/Screenshot 2025-11-13 024155.png" alt="3D Generated Mesh of a Pot" width="48%">
 
   - **Step 2**: Texture Tweaking in Meshy by choosing the closest texture to the original
      - There is also an option to paint textures onto the mesh with generated prompts such as "add an algae bloom texture" or "add a bright green moss texture" to the masked area.
     
-    <img src="Screenshot 2025-11-13 024416.png" alt="Text-to-Image Texture Prompt of algae" width="48%">
+    <img src="images/Screenshot 2025-11-13 024416.png" alt="Text-to-Image Texture Prompt of algae" width="48%">
 
   - **Step 3**: Export as .obj folders so that they maintain their new textures with the objects and can easily be imported into Blender.
 
-<img src="Crumpled_Plastic_2_1.png" alt="3D Generated Mesh of Crumpled Plastic" width="48%">
-<img src="Plastic_Bag_3_7.png" alt="3D Generated Mesh of Cheetos Bag" width="48%">
+<img src="images/Crumpled_Plastic_2_1.png" alt="3D Generated Mesh of Crumpled Plastic" width="48%">
+<img src="images/Plastic_Bag_3_7.png" alt="3D Generated Mesh of Cheetos Bag" width="48%">
 
 ```
 A note on Meshy.ai:
@@ -118,9 +118,9 @@ Now that you can rotate the object with its texture, you can check the quality o
 ```
 Hint: check any typography/fonts or logos as Meshy can sometimes struggle to replicate this accurately.
 ```
-    Rendering Uniformly (Recommended for uniform image shots)
-    The Group_Render.blend script is used here. This script is for a uniform 360 degrees, evenly spaced render around the object.
-    output_directory = "/path/directory"
+Rendering Uniformly (Recommended for uniform image shots)
+The Group_Render.blend script is used here. This script is for a uniform 360 degrees, evenly spaced render around the object.
+output_directory = "/path/directory"
 num_cameras = 8
 camera_distance = 5.0
 camera_height = 2.0
@@ -140,7 +140,7 @@ Hint: make sure to select the object when you run the render scripts or it won't
 #### Part 2: Rendering with Cycles
 
 
-![alt text](<Screenshot 2025-11-13 021853.png>)
+![Plastic bag 3D generated mesh inside an underwater marine simulation](<images/Screenshot 2025-11-13 021853.png>)
 ### 2B. An Accessible VR Pipeline (Track B)
 #### Part 1: Integrating Assets
 - Importing Blueprint
@@ -153,7 +153,7 @@ Hint: make sure to select the object when you run the render scripts or it won't
 ```
 Physics: For this particular BluePrint, switch 'Simulate Physics' off. (Static Mesh > Physics > Simulate Physics). That means it will just stay where it is when you pick it up. Why? Because the physics of the water system sends the objects up to the surface - so your object will start to float as soon as you enter the environment. Ofcourse, this might be the effect you're going for... 
 ```
-![alt text](<Screenshot 2025-11-13 021746.png>)
+![Elastic band (rubber) 3D generated mesh floating in an underwater marine simulation](<images/Screenshot 2025-11-13 021746.png>)
 
 ## Licensing, Copyright and Reusability
 The Amphitrite Dataset is stored on Figshare: https://doi.org/10.25398/rd.northumbria.28908176 
